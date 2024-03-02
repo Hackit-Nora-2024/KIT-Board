@@ -5,5 +5,7 @@
 #### 使用技術
 - Next.js 
 - Yamada UI
-- NextAuth.js（予定）
-- Firebase Firestore（予定）
+- Supabase
+
+#### Route Handler
+[!image](https://www.zenryoku-kun.com/post/nextjs-route-handler)
