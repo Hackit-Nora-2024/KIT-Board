@@ -8,4 +8,6 @@
 - Supabase
 
 #### Route Handler
-[!image](https://www.zenryoku-kun.com/post/nextjs-route-handler)
+![image](https://www.zenryoku-kun.com/post/nextjs-route-handler)
+
+
