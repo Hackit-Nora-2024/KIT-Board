@@ -12,7 +12,7 @@ type BordProps = {
 
 export default function Bord({num, name, title,article,date}: BordProps) {
     return(
-        <Box boxShadow="xs" color="Black" width="45%" height="25%" margin="2.5%" background="#FBFBFB" rounded="md">
+        <Box boxShadow="xs" color="Black" width="45%" height="50%" margin="2.5%" background="#FBFBFB" rounded="md">
         <Container>
         <Center >
             <Text>{num}</Text> {/* 番号*/}
