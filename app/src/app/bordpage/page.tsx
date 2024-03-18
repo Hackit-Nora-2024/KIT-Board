@@ -27,9 +27,10 @@ const BordPage = async() =>{
                 >Menu
             </MenuButton>
                 <MenuList>
-                <MenuItem>Set status</MenuItem>
-                <MenuItem>Edit Profile</MenuItem>
-                <MenuItem>Preferences</MenuItem>
+                <MenuItem>
+                  <Button>LogOut</Button>
+                  {/* ボタンと同じ役割です。 */}
+                </MenuItem>
             </MenuList>
         </Menu>
         </Flex>
@@ -40,7 +41,6 @@ const BordPage = async() =>{
                 return <Bord name={"@user_name"} title={post.title} article={post.content} date={post.created_at} key={idx}/>
             })}
         </Flex>
-        <Button pos="fixed" bottom="5" right="5" rounded="md" bg="primary" color="white"fontSize="2xl" size="lg">+</Button>
         <Modal></Modal>
         </div>
 

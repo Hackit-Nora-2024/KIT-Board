@@ -17,8 +17,7 @@ export default function Modal(){
             <Center>
             <ArticlePostForm></ArticlePostForm>
             </Center> 
-            <ModalFooter></ModalFooter>      
-            <ModalFooter></ModalFooter>    
+            <ModalFooter padding="5%"></ModalFooter>         
       </ModalComponent>
     </>
 
