@@ -6,7 +6,7 @@ import Bord from "@/component/Bord";
 
 const BordPage = () =>{
     return(
-        <body>
+        <div>
         <Box p="md" bg="black" position="fixed" width="100%">
         <Flex gap="wrap">
         <Text color="white" fontSize="4xl">タイトル</Text>
@@ -35,7 +35,7 @@ const BordPage = () =>{
             <Bord num={"No.004"} name={"a"} title={"a"} article={"a"} date={"a"}></Bord>
             <Bord num={"No.004"} name={"a"} title={"a"} article={"a"} date={"a"}></Bord>
         </Flex>
-        </body>
+        </div>
     )
 }
 export default BordPage;
