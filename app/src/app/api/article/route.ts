@@ -1,17 +1,17 @@
 import { Database } from "@/types/supabase"
-import { createClient } from "@supabase/supabase-js"
-import { NextRequest } from "next/server"
-const supabase = createClient<Database>(
+import { ServerSupabase } from "@/libs/supabase"
+import { NextRequest, NextResponse } from "next/server"
+/*const supabase = createClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL as string,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
-)
+)*/
 
 async function POST(req: NextRequest) {
     const PostData = await req.formData()
-    const user = await supabase.auth.getUser()
+    const user = await ServerSupabase.auth.getUser()
     const UserId = user.data.user?.id as string
     const NumberOnlyID = UserId.replaceAll("-", "")
-    const response = await supabase.from("posts")
+    const response = await ServerSupabase.from("posts")
         .insert({
             title : PostData.get("title")?.toString() || "No Title",
             content: PostData.get("content")?.toString() || "No Content",
@@ -29,11 +29,17 @@ async function POST(req: NextRequest) {
 }
 
 async function GET() {
-    const result = await supabase.from("posts").select("*")
+    const result = await ServerSupabase.from("posts").select()
     if(result.error) throw result.error
-    return result.data
+    return NextResponse.json(result.data)
 }
-function DELETE() {}
+async function DELETE(req: NextRequest) {
+    const formRequest = await req.formData()
+    const postId = formRequest.get("id")?.toString()
+    const result = await ServerSupabase.from("posts").delete().match({id: postId})
+    if(result.error) throw result.error
+    return console.info("Delete Success!")
+}
 
 export { POST, GET, DELETE }
 
