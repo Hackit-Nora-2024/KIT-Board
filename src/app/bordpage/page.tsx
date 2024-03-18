@@ -5,6 +5,7 @@ import Bord from "@/component/Bord";
 import Modal from "@/component/Modal";
 import ArticlePostForm from "@/component/ArticlePostForm";
 import { Database } from "@/types/supabase";
+import Header from "@/component/navbar";
 
 const BordPage = async() =>{
     /* type PostDataType = Database["public"]["Tables"]["posts"]["Row"]
@@ -17,25 +18,7 @@ const BordPage = async() =>{
     const postData = await fetchPostData.json() as PostDataType[] */
     return(
         <div>
-        <Box p="md" bg="black" position="fixed" width="100%">
-        <Flex gap="wrap">
-        <Text color="white" fontSize="4xl">タイトル</Text>
-        <Spacer/>
-        <Menu>
-            <MenuButton
-                as={Button}
-                backgroundColor="primary" color="white">Menu
-            </MenuButton>
-                <MenuList>
-                <MenuItem>アカウント</MenuItem>
-                <MenuItem>
-                    <Button width="100%">LogOut</Button>
-                    {/* ボタンと同じ役割です。 */}
-                </MenuItem>
-            </MenuList>
-        </Menu>
-        </Flex>
-        </Box>
+        <Header></Header>
     
         {/* <Flex wrap="wrap" paddingTop="5%">
             {postData.map((post,idx) => {
