@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import YamadaProvider from "@/provider/yamada";
+import SupabaseDataProvider from "@/provider/SupabaseDataProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +16,9 @@ export default function RootLayout({
     <html lang="en">
         <body>
           <YamadaProvider>
-            {children}
+            <SupabaseDataProvider>
+              {children}
+            </SupabaseDataProvider>
           </YamadaProvider>
         </body>
     </html>
