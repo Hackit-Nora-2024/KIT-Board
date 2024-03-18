@@ -33,7 +33,7 @@ async function GET() {
     "use server"
     const result = await ServerSupabase.from("posts").select()
     if(result.error) throw result.error
-    return NextResponse.json(result.data)
+    return Response.json(result.data)
 }
 async function DELETE(req: NextRequest) {
     "use server"

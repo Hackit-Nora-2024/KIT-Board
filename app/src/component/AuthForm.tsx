@@ -16,7 +16,7 @@ export default function AuthForm() {
                 }
             })
             if (result.error) {
-                console.error(result.error)
+                console.error("ログイン時に",result.error)
             } else {
                 router.push(`${process.env.FIRST_REDIRET}`)
             }
