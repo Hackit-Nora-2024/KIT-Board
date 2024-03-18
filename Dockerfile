@@ -5,7 +5,7 @@ FROM node:14-alpine
 WORKDIR /app
 
 # 依存関係をインストールするために、プロジェクトのpackage.jsonとpackage-lock.jsonをコピーします。
-COPY package*.json ./
+COPY package.json ./
 
 # 依存関係をインストールします。
 RUN npm install
