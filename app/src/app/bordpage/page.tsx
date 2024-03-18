@@ -1,3 +1,4 @@
+"use client"
 import React, { useState }  from "react"
 import { Box, Spacer, Text, Button, Menu, MenuButton, MenuItem, MenuList} from "@yamada-ui/react";
 import { Flex } from "@yamada-ui/react"
@@ -37,7 +38,7 @@ const BordPage = () =>{
             <Bord name={"a"} title={"a"} article={"a"} date={"a"}></Bord>
         </Flex>
         <Button pos="fixed" bottom="5" right="5" rounded="md" bg="primary" color="white"fontSize="2xl" size="lg">+</Button>
-        <ArticlePostForm></ArticlePostForm>
+        <Modal></Modal>
         </div>
 
     )

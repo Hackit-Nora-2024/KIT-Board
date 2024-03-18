@@ -1,6 +1,8 @@
-import { Button, Modal as ModalComponent, ModalBody, ModalFooter, ModalHeader, Textarea, Input} from "@yamada-ui/react"
+`use client`
+import { Button, Modal as ModalComponent, ModalBody, ModalFooter, ModalHeader, Textarea, Input, Center} from "@yamada-ui/react"
 import { useDisclosure } from "@yamada-ui/react"
 import React  from "react"
+import ArticlePostForm from "./ArticlePostForm"
 
 export default function Modal(){
 
@@ -8,22 +10,15 @@ export default function Modal(){
 
   return (
     <>
-      <Button onClick={onOpen}>投稿する</Button>
+      <Button pos="fixed" bottom="5" right="5" rounded="md" bg="primary" color="white"fontSize="2xl" size="lg" onClick={onOpen}>投稿する</Button>
   
       <ModalComponent isOpen={isOpen} onClose={onClose}>
-        <ModalHeader >ドラゴンボール</ModalHeader>
-  
-        <ModalBody>
-        <Input placeholder="タイトル" />
-        <Textarea placeholder="記事"></Textarea>
-        </ModalBody>
-  
-        <ModalFooter>
-          <Button variant="ghost" onClick={onClose}>
-            とじる
-          </Button>
-          <Button colorScheme="primary">Wikipadia</Button>
-        </ModalFooter>
+        <ModalHeader >投稿</ModalHeader>
+            <Center>
+            <ArticlePostForm></ArticlePostForm>
+            </Center> 
+            <ModalFooter></ModalFooter>      
+            <ModalFooter></ModalFooter>    
       </ModalComponent>
     </>
 
