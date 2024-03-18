@@ -1,23 +1,19 @@
-# ベースイメージを指定します。ここでは、Node.jsの公式イメージを使用します。
-FROM node:14-alpine
+# Next.jsの公式イメージをベースにする
+FROM node:alpine
 
-# 作業ディレクトリを設定します。
+# アプリケーションのディレクトリを作成し、そこに移動する
 WORKDIR /app
 
-# 依存関係をインストールするために、プロジェクトのpackage.jsonとpackage-lock.jsonをコピーします。
+# アプリケーションの依存関係をインストールする
 COPY package.json ./
+COPY yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-# 依存関係をインストールします。
-RUN npm install
-
-# プロジェクトのソースコードをコピーします。
+# アプリケーションのソースコードをコピーする
 COPY . .
 
-# ビルドステージでNext.jsプロジェクトをビルドします。
-RUN npm run build
+# Next.jsアプリケーションをビルドする
+RUN yarn build
 
-# 実行時に使用するポートを指定します。
-EXPOSE 3000
-
-# コンテナが起動したときに実行するコマンドを指定します。
-CMD ["npm", "start"]
+# アプリケーションを実行するためのコマンドを指定する
+CMD ["yarn", "start"]
