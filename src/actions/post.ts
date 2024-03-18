@@ -1,4 +1,4 @@
-import { ClientSupabase } from "@/libs/supabase"
+import { ClientSupabase } from "@/libs/supabase.client"
 
 export default function ServerPost(formData: FormData){
     const PostData = formData
