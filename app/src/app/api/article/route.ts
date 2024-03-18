@@ -35,6 +35,7 @@ async function GET() {
     if(result.error) throw result.error
     return Response.json(result.data)
 }
+
 async function DELETE(req: NextRequest) {
     "use server"
     const formRequest = await req.formData()
