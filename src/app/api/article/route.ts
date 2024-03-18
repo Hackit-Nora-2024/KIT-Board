@@ -46,5 +46,5 @@ async function DELETE(req: NextRequest) {
     return console.info("Delete Success!")
 }
 
-export { POST, GET, DELETE }
+export { POST as POST, GET as GET, DELETE as DELETE }
 
