@@ -6,15 +6,18 @@ import Modal from "@/component/Modal";
 import ArticlePostForm from "@/component/ArticlePostForm";
 import { Database } from "@/types/supabase";
 
-const BordPage = async() =>{
-    /* type PostDataType = Database["public"]["Tables"]["posts"]["Row"]
+export const dynamic = 'force-dynamic'
+
+
+async function BordPage(){
+    /*type PostDataType = Database["public"]["Tables"]["posts"]["Row"]
     const fetchPostData = await fetch("http://localhost:3000/api/article", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
         },
     })
-    const postData = await fetchPostData.json() as PostDataType[] */
+    const postData = await fetchPostData.json() as PostDataType[]*/
     return(
         <div>
         <Box p="md" bg="black" position="fixed" width="100%">
