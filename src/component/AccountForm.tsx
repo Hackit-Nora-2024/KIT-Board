@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Database } from '@/types/supabase'
 import { User, createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { Button, Input, Label } from '@yamada-ui/react'
 
 export default function AccountForm({ user }: { user: User | null }) {
   /* const supabase = createClientComponentClient<Database>()
@@ -75,11 +76,11 @@ export default function AccountForm({ user }: { user: User | null }) {
   return (
     <div className="form-widget">
       <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={user?.email} disabled />
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="text" value={user?.email} disabled />
       </div>
       <div>
-        <label htmlFor="fullName">Full Name</label>
+        <Label htmlFor="fullName">Full Name</Label>
         <input
           id="fullName"
           type="text"
@@ -88,8 +89,8 @@ export default function AccountForm({ user }: { user: User | null }) {
         />
       </div>
       <div>
-        <label htmlFor="username">Username</label>
-        <input
+        <Label htmlFor="username">Username</Label>
+        <Input
           id="username"
           type="text"
           value={user?.user_metadata.username || ''}
@@ -97,8 +98,8 @@ export default function AccountForm({ user }: { user: User | null }) {
         />
       </div>
       <div>
-        <label htmlFor="website">Website</label>
-        <input
+        <Label htmlFor="website">Website</Label>
+        <Input
           id="website"
           type="url"
           value={user?.user_metadata.website || ''}
@@ -118,9 +119,9 @@ export default function AccountForm({ user }: { user: User | null }) {
 
       <div>
         <form action="/api/auth/signout" method="post">
-          <button className="button block" type="submit">
+          <Button className="button block" type="submit">
             Sign out
-          </button>
+          </Button>
         </form>
       </div>
     </div>
