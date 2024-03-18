@@ -26,7 +26,7 @@ async function POST(req: NextRequest) {
         statusText: (await response).statusText,
         error: (await response).error
     }
-    return ResponseData
+    // return ResponseData
 }
 
 async function GET() {
