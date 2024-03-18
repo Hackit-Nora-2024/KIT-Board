@@ -1,6 +1,6 @@
 export default function ArticlePostForm() {
     return (
-        <form action="/api/article" method="post">
+        <form action="http://localhost:3000/api/article" method="post">
             <label htmlFor="title">Title</label>
             <input type="text" id="title" name="title" />
 

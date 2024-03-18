@@ -4,8 +4,17 @@ import { Flex } from "@yamada-ui/react"
 import Bord from "@/component/Bord";
 import Modal from "@/component/Modal";
 import ArticlePostForm from "@/component/ArticlePostForm";
+import { Database } from "@/types/supabase";
 
-const BordPage = () =>{
+const BordPage = async() =>{
+    type PostDataType = Database["public"]["Tables"]["posts"]["Row"]
+    const fetchPostData = await fetch("http://localhost:3000/api/article", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+    const postData = await fetchPostData.json() as PostDataType[]
     return(
         <div>
         <Box p="md" bg="black" position="fixed" width="100%">
@@ -25,16 +34,11 @@ const BordPage = () =>{
         </Menu>
         </Flex>
         </Box>
-       
+    
         <Flex wrap="wrap" paddingTop="5%">
-            <Bord name={"@user_name"} title={"AIによって生成された文章"} article={"青い空の下で、風は静かに吹き抜ける。木々がそよぎ、鳥たちがさえずる。太陽は穏やかに輝き、草原は緑色に輝いている。人々は笑顔で手を振り合い、幸せな時を過ごしている。夢や希望が空に舞い、未来への道を切り拓いている。"} date={"a"}></Bord>
-            <Bord name={"a"} title={"a"} article={"a"} date={"a"}></Bord>
-            <Bord name={"a"} title={"a"} article={"a"} date={"a"}></Bord>
-            <Bord name={"a"} title={"a"} article={"a"} date={"a"}></Bord>
-            <Bord name={"a"} title={"a"} article={"a"} date={"a"}></Bord>
-            <Bord name={"a"} title={"a"} article={"a"} date={"a"}></Bord>
-            <Bord name={"a"} title={"a"} article={"a"} date={"a"}></Bord>
-            <Bord name={"a"} title={"a"} article={"a"} date={"a"}></Bord>
+            {postData.map((post,idx) => {
+                return <Bord name={"@user_name"} title={post.title} article={post.content} date={post.created_at} key={idx}/>
+            })}
         </Flex>
         <Button pos="fixed" bottom="5" right="5" rounded="md" bg="primary" color="white"fontSize="2xl" size="lg">+</Button>
         <ArticlePostForm></ArticlePostForm>
