@@ -1,11 +1,11 @@
-
-import { Database } from "@/types/supabase"
 import { ServerSupabase } from "@/libs/supabase"
 import { NextRequest, NextResponse } from "next/server"
 /*const supabase = createClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL as string,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
 )*/
+
+import "server-only"
 
 async function POST(req: NextRequest) {
     "use server"
