@@ -27,7 +27,12 @@ async function POST(req: NextRequest) {
     }
     return ResponseData
 }
-function GET() {}
+
+async function GET() {
+    const result = await supabase.from("posts").select("*")
+    if(result.error) throw result.error
+    return result.data
+}
 function DELETE() {}
 
 export { POST, GET, DELETE }
