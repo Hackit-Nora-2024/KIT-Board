@@ -1,4 +1,3 @@
-"use client"
 import React, { useState }  from "react"
 import { Box, Spacer, Text, Button, Menu, MenuButton, MenuItem, MenuList} from "@yamada-ui/react";
 import { Flex } from "@yamada-ui/react"
