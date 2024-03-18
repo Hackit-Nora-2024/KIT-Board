@@ -33,7 +33,13 @@ async function GET() {
     if(result.error) throw result.error
     return result.data
 }
-function DELETE() {}
+async function DELETE(req: NextRequest) {
+    const formRequest = await req.formData()
+    const postId = formRequest.get("id")?.toString()
+    const result = await supabase.from("posts").delete().match({id: postId})
+    if(result.error) throw result.error
+    return console.info("Delete Success!")
+}
 
 export { POST, GET, DELETE }
 
