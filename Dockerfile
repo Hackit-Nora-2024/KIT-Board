@@ -1,5 +1,5 @@
 # Next.jsの公式イメージをベースにする
-FROM node:alpine
+FROM node:20-alpine
 
 # アプリケーションのディレクトリを作成し、そこに移動する
 WORKDIR /app

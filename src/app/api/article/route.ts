@@ -7,7 +7,6 @@ import { NextRequest, NextResponse } from "next/server"
 )*/
 
 async function POST(req: NextRequest) {
-    "use server"
     const PostData = await req.formData()
     const user = await ServerSupabase.auth.getUser()
     const UserId = user.data.user?.id as string
@@ -30,14 +29,12 @@ async function POST(req: NextRequest) {
 }
 
 async function GET() {
-    "use server"
     const result = await ServerSupabase.from("posts").select()
     if(result.error) throw result.error
     return Response.json(result.data)
 }
 
 async function DELETE(req: NextRequest) {
-    "use server"
     const formRequest = await req.formData()
     const postId = formRequest.get("id")?.toString()
     const result = await ServerSupabase.from("posts").delete().match({id: postId})
