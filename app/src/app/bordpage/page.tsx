@@ -27,9 +27,10 @@ const BordPage = async() =>{
                 >Menu
             </MenuButton>
                 <MenuList>
-                <MenuItem>Set status</MenuItem>
-                <MenuItem>Edit Profile</MenuItem>
-                <MenuItem>Preferences</MenuItem>
+                <MenuItem>
+                  <Button>LogOut</Button>
+                  {/* ボタンと同じ役割です。 */}
+                </MenuItem>
             </MenuList>
         </Menu>
         </Flex>
