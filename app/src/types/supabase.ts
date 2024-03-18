@@ -11,25 +11,51 @@ export type Database = {
     Tables: {
       posts: {
         Row: {
-          author_icon_url: string | null
-          post_id: number
-          post_tags: string[] | null
-          post_text: string | null
-          post_time: string | null
+          content: string | null
+          created_at: string | null
+          id: number
+          title: string | null
+          user_id: number | null
         }
         Insert: {
-          author_icon_url?: string | null
-          post_id?: never
-          post_tags?: string[] | null
-          post_text?: string | null
-          post_time?: string | null
+          content?: string | null
+          created_at?: string | null
+          id?: never
+          title?: string | null
+          user_id?: number | null
         }
         Update: {
-          author_icon_url?: string | null
-          post_id?: never
-          post_tags?: string[] | null
-          post_text?: string | null
-          post_time?: string | null
+          content?: string | null
+          created_at?: string | null
+          id?: never
+          title?: string | null
+          user_id?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_posts_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      users: {
+        Row: {
+          icon_url: string | null
+          id: number
+          name: string | null
+        }
+        Insert: {
+          icon_url?: string | null
+          id?: never
+          name?: string | null
+        }
+        Update: {
+          icon_url?: string | null
+          id?: never
+          name?: string | null
         }
         Relationships: []
       }

@@ -18,7 +18,7 @@ export default function AuthForm() {
             if (result.error) {
                 console.error(result.error)
             } else {
-                router.push('/account')
+                router.push('/bordpage')
             }
         }
     }
