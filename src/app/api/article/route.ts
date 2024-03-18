@@ -1,3 +1,4 @@
+"use server"
 import { Database } from "@/types/supabase"
 import { ServerSupabase } from "@/libs/supabase"
 import { NextRequest, NextResponse } from "next/server"
