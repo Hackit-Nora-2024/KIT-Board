@@ -19,5 +19,5 @@ export async function middleware(req: NextRequest) {
   return res
 }
 export const config = {
-    matcher: ["/",`${process.env.FIRST_REDIRET as string}`]
+    matcher: ["/",`/*`]
 }
