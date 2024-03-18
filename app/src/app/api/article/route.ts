@@ -7,14 +7,15 @@ const supabase = createClient<Database>(
 )
 
 async function POST(req: NextRequest) {
-    const PostData = req.formData()
+    const PostData = await req.formData()
     const user = await supabase.auth.getUser()
-    const response = supabase.from("posts")
+    const UserId = user.data.user?.id as string
+    const NumberOnlyID = UserId.replaceAll("-", "")
+    const response = await supabase.from("posts")
         .insert({
-            author_icon_url: user.data.user?.user_metadata.avatar_url,
-            post_tags: PostData.post_tags, 
-            post_text: PostData.post_text,
-            post_time: new Date().toISOString()
+            title : PostData.get("title")?.toString() || "No Title",
+            content: PostData.get("content")?.toString() || "No Content",
+            user_id: parseInt(NumberOnlyID)
         }).single()
     
     if((await response).error) throw (await response).error

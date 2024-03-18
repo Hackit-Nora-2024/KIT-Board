@@ -11,25 +11,28 @@ export type Database = {
     Tables: {
       posts: {
         Row: {
-          content: string | null
-          created_at: string | null
+          content: string
+          created_at: string
           id: number
-          title: string | null
-          user_id: number | null
+          tag: string[] | null
+          title: string
+          user_id: number
         }
         Insert: {
-          content?: string | null
-          created_at?: string | null
-          id?: never
-          title?: string | null
-          user_id?: number | null
+          content?: string
+          created_at?: string
+          id?: number
+          tag?: string[] | null
+          title?: string
+          user_id: number
         }
         Update: {
-          content?: string | null
-          created_at?: string | null
-          id?: never
-          title?: string | null
-          user_id?: number | null
+          content?: string
+          created_at?: string
+          id?: number
+          tag?: string[] | null
+          title?: string
+          user_id?: number
         }
         Relationships: [
           {
@@ -43,19 +46,19 @@ export type Database = {
       }
       users: {
         Row: {
-          icon_url: string | null
+          icon_url: string
           id: number
-          name: string | null
+          name: string
         }
         Insert: {
-          icon_url?: string | null
-          id?: never
-          name?: string | null
+          icon_url?: string
+          id: number
+          name?: string
         }
         Update: {
-          icon_url?: string | null
-          id?: never
-          name?: string | null
+          icon_url?: string
+          id?: number
+          name?: string
         }
         Relationships: []
       }
