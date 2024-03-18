@@ -12,7 +12,7 @@ export default function ArticlePostForm() {
             <Label htmlFor="content">Content</Label>
             <Textarea id="content" name="content" />
         </div>
-            <Button width="100%" variant="ghost"backgroundColor="primary" color="white" type="submit">Submit</Button>
+            <Button width="100%"  marginTop="5%" variant="ghost"backgroundColor="primary" color="white" type="submit">Submit</Button>
         </div>
         </form>
     )
