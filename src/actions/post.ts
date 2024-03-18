@@ -1,6 +1,6 @@
 import { ClientSupabase } from "@/libs/supabase"
 
-export default async function ServerPost(formData: FormData){
+export default function ServerPost(formData: FormData){
     const PostData = formData
     /* console.log(PostData.get("title")?.toString(), PostData.get("content")?.toString()) */
     if(!ClientSupabase) throw new Error("Supabase Client is not initialized") 

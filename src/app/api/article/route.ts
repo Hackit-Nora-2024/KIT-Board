@@ -1,15 +1,9 @@
 import { ServerSupabase } from "@/libs/supabase"
 import { NextRequest, NextResponse } from "next/server"
-/*const supabase = createClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL as string,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
-)*/
 
-import "server-only"
-
-async function POST(req: NextRequest) {
+export async function POST(request: Request) {
     "use server"
-    const PostData = await req.formData()
+    const PostData = await request.formData()
     const user = await ServerSupabase.auth.getUser()
     const UserId = user.data.user?.id as string
     const NumberOnlyID = UserId.replaceAll("-", "")
@@ -21,30 +15,25 @@ async function POST(req: NextRequest) {
         }).single()
     
     if((await response).error) throw (await response).error
-
-    const ResponseData = {
-        status: (await response).status,
-        statusText: (await response).statusText,
-        error: (await response).error
-    }
-    // return ResponseData
+    return Response.json(response.data)
+    
 }
 
-async function GET() {
+export async function GET(request: Request) {
     "use server"
     const result = await ServerSupabase.from("posts").select()
     if(result.error) throw result.error
     return Response.json(result.data)
 }
 
-async function DELETE(req: NextRequest) {
+export async function DELETE(request: Request) {
     "use server"
-    const formRequest = await req.formData()
+    const formRequest = await request.formData()
     const postId = formRequest.get("id")?.toString()
     const result = await ServerSupabase.from("posts").delete().match({id: postId})
     if(result.error) throw result.error
-    return console.info("Delete Success!")
+    return Response.json(result.status)
 }
 
-export { POST as POST, GET as GET, DELETE as DELETE }
+
 
