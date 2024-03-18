@@ -2,7 +2,7 @@ import { Button, Center, Input, Label, Textarea } from "@yamada-ui/react";
 
 export default function ArticlePostForm() {
     return (
-        <form action="/api/article" method="post">
+        <form action="http://localhost:3000/api/article" method="post">
         <div>
         <div>
         <Label background="#FBFBFB" htmlFor="title" >Title</Label>    

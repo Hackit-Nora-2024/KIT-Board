@@ -18,7 +18,7 @@ export default function AuthForm() {
             if (result.error) {
                 console.error(result.error)
             } else {
-                router.push('/bordpage')
+                router.push(`${process.env.FIRST_REDIRET}`)
             }
         }
     }
