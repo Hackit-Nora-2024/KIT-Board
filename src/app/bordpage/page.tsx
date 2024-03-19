@@ -7,19 +7,11 @@ import Modal from "@/component/Modal";
 import ArticlePostForm from "@/component/ArticlePostForm";
 import { Database } from "@/types/supabase";
 import Header from "@/component/navbar";
+import { PostDataContext } from "@/provider/SupabaseDataProvider";
 
-export const dynamic = 'force-dynamic'
 
-
-async function BordPage(){
-    /*type PostDataType = Database["public"]["Tables"]["posts"]["Row"]
-    const fetchPostData = await fetch("http://localhost:3000/api/article", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    })
-    const postData = await fetchPostData.json() as PostDataType[]*/
+function BordPage(){
+    const postDatus = useContext(PostDataContext)
     return(
         <div>
         <Box p="md" bg="black" position="fixed" width="100%">
@@ -45,7 +37,7 @@ async function BordPage(){
             {postDatus !== null && postDatus.map((post,idx) => {
                 return <Bord name={"@user_name"} title={post.title} article={post.content} date={post.created_at} key={idx}/>
             })}
-        </Flex> */}
+        </Flex>
         </div>
     )
 }
