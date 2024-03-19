@@ -9,7 +9,7 @@ import { Database } from "@/types/supabase";
 import Header from "@/component/navbar";
 import { PostDataContext } from "@/provider/SupabaseDataProvider";
 import { ClientSupabase } from "@/libs/supabase.client";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
 
 function BordPage(){
