@@ -12,7 +12,7 @@ export default function AuthForm() {
             const result = await supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
-                    redirectTo: 'http://localhost:3000/api/auth/callback'
+                    redirectTo: 'https://kit-board.vercel.app//api/auth/callback'
                 }
             })
             if (result.error) {
