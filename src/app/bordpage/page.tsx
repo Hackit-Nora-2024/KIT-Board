@@ -9,9 +9,11 @@ import { Database } from "@/types/supabase";
 import Header from "@/component/navbar";
 import { PostDataContext } from "@/provider/SupabaseDataProvider";
 import { ClientSupabase } from "@/libs/supabase.client";
+import { useRouter } from "next/navigation";
 
 
 function BordPage(){
+    const router = useRouter()  
     const postDatus = useContext(PostDataContext)
     return(
         <div>
@@ -25,7 +27,10 @@ function BordPage(){
                 >Menu
             </MenuButton>
                 <MenuList>
-                <MenuItem onClick={() => ClientSupabase.auth.signOut()}>
+                <MenuItem onClick={() => {
+                    ClientSupabase.auth.signOut()
+                    router.push("/")
+                }}>
                     <Button>LogOut</Button>
                     {/* ボタンと同じ役割です。 */}
                 </MenuItem>
