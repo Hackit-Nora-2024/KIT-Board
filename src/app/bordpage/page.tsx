@@ -28,8 +28,13 @@ function BordPage(){
             </MenuButton>
                 <MenuList>
                 <MenuItem onClick={() => {
-                    ClientSupabase.auth.signOut()
-                    router.push("/")
+                    ClientSupabase.auth.signOut().then((res) => {
+                        if(res.error) {
+                            console.error(res.error)
+                        }
+                        router.push("/")
+                    })
+                    
                 }}>
                     <Button>LogOut</Button>
                     {/* ボタンと同じ役割です。 */}
