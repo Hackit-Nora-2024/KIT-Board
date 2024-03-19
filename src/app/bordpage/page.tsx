@@ -38,6 +38,7 @@ function BordPage(){
                 return <Bord name={"@user_name"} title={post.title} article={post.content} date={post.created_at} key={idx}/>
             })}
         </Flex>
+        <Modal></Modal>
         </div>
     )
 }

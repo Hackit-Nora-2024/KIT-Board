@@ -1,4 +1,3 @@
-"use client"
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { Database } from '@/types/supabase'
@@ -7,7 +6,8 @@ import { useContext } from 'react'
 import { UserDataContext } from '@/provider/SupabaseDataProvider'
 
 
-export default function Account() {
-  const user = useContext(UserDataContext)  
+export default async function Account() {
+  const supabase = createServerComponentClient({cookies})
+  const user  = (await supabase.auth.getUser()).data.user
   return <AccountForm user={user} />
 }
