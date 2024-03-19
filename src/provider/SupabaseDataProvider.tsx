@@ -10,7 +10,7 @@ export default function SupabaseDataProvider({children}:{children:React.ReactNod
     const [userData,setUserData] = useState<User | null>(null)
     const [postData,setPostData] = useState<PostData[] | null>([])
     
-    ClientSupabase.from('posts').select().then((result) => {setPostData(result.data)})
+    ClientSupabase.from('posts').select().order("created_at",{ascending: true}).then((result) => {setPostData(result.data)})
     ClientSupabase.auth.getUser().then((result) => {setUserData(result.data.user)})
     return(
         <UserDataContext.Provider value={userData}>
