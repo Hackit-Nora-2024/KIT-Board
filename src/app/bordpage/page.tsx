@@ -8,6 +8,7 @@ import ArticlePostForm from "@/component/ArticlePostForm";
 import { Database } from "@/types/supabase";
 import Header from "@/component/navbar";
 import { PostDataContext } from "@/provider/SupabaseDataProvider";
+import { ClientSupabase } from "@/libs/supabase.client";
 
 
 function BordPage(){
@@ -25,7 +26,7 @@ function BordPage(){
             </MenuButton>
                 <MenuList>
                 <MenuItem>
-                    <Button>LogOut</Button>
+                    <Button onClick={() => ClientSupabase.auth.signOut()}>LogOut</Button>
                     {/* ボタンと同じ役割です。 */}
                 </MenuItem>
             </MenuList>
