@@ -31,8 +31,10 @@ function BordPage(){
                     ClientSupabase.auth.signOut().then((res) => {
                         if(res.error) {
                             console.error(res.error)
+                        } else {
+                            router.push("/")
                         }
-                        router.push("/")
+                        
                     })
                     
                 }}>
