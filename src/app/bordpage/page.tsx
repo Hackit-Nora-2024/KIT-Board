@@ -25,8 +25,8 @@ function BordPage(){
                 >Menu
             </MenuButton>
                 <MenuList>
-                <MenuItem>
-                    <Button onClick={() => ClientSupabase.auth.signOut()}>LogOut</Button>
+                <MenuItem onClick={() => ClientSupabase.auth.signOut()}>
+                    <Button>LogOut</Button>
                     {/* ボタンと同じ役割です。 */}
                 </MenuItem>
             </MenuList>
