@@ -1,27 +1,21 @@
-import { ClientSupabase } from "@/libs/supabase.client"
+"use server"
+import { ServerSupabase } from "@/libs/supabase.server"
 
-export default function ServerPost(formData: FormData){
+async function ServerPost(formData: FormData){
     const PostData = formData
     /* console.log(PostData.get("title")?.toString(), PostData.get("content")?.toString()) */
-    if(!ClientSupabase) throw new Error("Supabase Client is not initialized") 
-    ClientSupabase.auth.getUser().then((res) => {
-        const UserId = res.data.user?.id as string
-        const NumberOnlyID = UserId.replaceAll("-", "")
-        const response = ClientSupabase.from("posts")
+    if(!ServerSupabase) throw new Error("Supabase Client is not initialized") 
+    const user = await ServerSupabase.auth.getUser()
+    const UserId = user.data.user?.id as string
+    const NumberOnlyID = UserId.replaceAll("-", "")
+    const response = await ServerSupabase.from("posts")
         .insert({
             title : PostData.get("title")?.toString() || "No Title",
             content: PostData.get("content")?.toString() || "No Content",
             user_id: parseInt(NumberOnlyID)
         }).single()
-        response.then((res) => {
-            if(res.error) throw res.error
-            const ResponseData = {
-                status: res.status,
-                statusText: res.statusText,
-                error: res.error
-            }
-            return ResponseData
-        })
-
-    })
+    if(response.error) throw new Error(response.error.message)
+    return response.data
 }
+
+export default ServerPost
